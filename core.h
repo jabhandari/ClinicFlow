@@ -6,7 +6,7 @@
 
 #define TOTAL_MONTHS 12
 #define LEAP_YEAR_MONTH_DAYS 29
-#define NON_LEAP_YEAR_MONTH_DAYS 29
+#define NON_LEAP_YEAR_MONTH_DAYS 28
 #define MONTHS_DAYS_31 31
 #define MONTHS_DAYS_30 30
 ///////////////////////////////

@@ -456,7 +456,8 @@ void viewAppointmentSchedule(struct ClinicData* data)
 void addAppointment(struct Appointment* appoint, int maxAppointments,
     struct Patient* patient, int maxPatient)
 {
-    int i,j; int valid = 1; int isValid = 1;
+    int i, j;
+    int isValid = 1;
     int patientNumInput;
     int appointmentScheduled = 0; 
     int appointmentFound = 0; 
@@ -494,28 +495,23 @@ void addAppointment(struct Appointment* appoint, int maxAppointments,
                                     "intervals.\n\n", OPENHOUR, CLOSEHOUR, INTERVAL);
                                 isValid = 0;
                             }
-                       
                         } while (isValid == 0);
-                        if ((isValidAppointment = 1))
-                        {
-                            
+                        isValidAppointment = 1;
 
-                            for (j = 0 && valid == 0; j < maxAppointments; j++)
+                        for (j = 0; j < maxAppointments; j++)
+                        {
+                            if (appoint[j].patientNum != 0 &&
+                                appoint[j].date.year == year &&
+                                appoint[j].date.month == month &&
+                                appoint[j].date.day == day &&
+                                appoint[j].time.hour == hour &&
+                                appoint[j].time.min == minute)
                             {
-                                if (appoint[j].patientNum != 0 &&
-                                    appoint[j].date.year == year &&
-                                    appoint[j].date.month == month &&
-                                    appoint[j].date.day == day &&
-                                    appoint[j].time.hour == hour &&
-                                    appoint[j].time.min == minute) {
-                                    printf("\nERROR: Appointment timeslot is not available!\n\n");
-                                    isValidAppointment = 0;
-                                    valid = 0;
-                                    
-                                }
+                                printf("\nERROR: Appointment timeslot is not available!\n\n");
+                                isValidAppointment = 0;
+                                break;
                             }
                         }
-
                     } while (!isValidAppointment);
 
               
